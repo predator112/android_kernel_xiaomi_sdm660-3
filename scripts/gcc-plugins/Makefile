@@ -18,13 +18,14 @@ endif
 
 export HOSTLIBS
 
-$(HOSTLIBS)-y := $(foreach p,$(GCC_PLUGIN),$(if $(findstring /,$(p)),,$(p)))
+ifneq ($(CFLAGS_KCOV), $(SANCOV_PLUGIN))
+  GCC_PLUGIN := $(filter-out $(SANCOV_PLUGIN), $(GCC_PLUGIN))
+endif
+
+$(HOSTLIBS)-y := $(GCC_PLUGIN)
 always := $($(HOSTLIBS)-y)
 
 cyc_complexity_plugin-objs := cyc_complexity_plugin.o
 sancov_plugin-objs := sancov_plugin.o
-
-subdir-y := $(GCC_PLUGIN_SUBDIR)
-subdir-  += $(GCC_PLUGIN_SUBDIR)
 
 clean-files += *.so
