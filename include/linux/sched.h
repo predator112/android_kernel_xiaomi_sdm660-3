@@ -476,8 +476,6 @@ extern void io_schedule(void);
 
 void __noreturn do_task_dead(void);
 
-void __noreturn do_task_dead(void);
-
 struct nsproxy;
 struct user_namespace;
 
