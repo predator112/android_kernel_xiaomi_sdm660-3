@@ -3535,7 +3535,6 @@ static int msm_hs_probe(struct platform_device *pdev)
 		if (unlikely(ret))
 			MSM_HS_WARN("%s: Failed to create dev. attr", __func__);
 	}
-
 	uport->irq = core_irqres;
 	msm_uport->bam_irq = bam_irqres;
 	pdata->wakeup_irq = wakeup_irqres;
