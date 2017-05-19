@@ -312,6 +312,7 @@ static void sugov_set_iowait_boost(struct sugov_cpu *sg_cpu, u64 time)
 	if (!sg_policy->tunables->iowait_boost_enable)
 		return;
 
+<<<<<<< HEAD
 	/* Clear iowait_boost if the CPU apprears to have been idle. */
 	if (sg_cpu->iowait_boost) {
 		s64 delta_ns = time - sg_cpu->last_update;
@@ -322,6 +323,9 @@ static void sugov_set_iowait_boost(struct sugov_cpu *sg_cpu, u64 time)
 		}
 	}
 	if (sg_cpu->flags & SCHED_CPUFREQ_IOWAIT) {
+=======
+	if (flags & SCHED_CPUFREQ_IOWAIT) {
+>>>>>>> 634d8994b9d67... FROMLIST: sched: Make iowait_boost optional in schedutil
 		if (sg_cpu->iowait_boost_pending)
 			return;
 
@@ -700,6 +704,7 @@ static ssize_t down_rate_limit_us_store(struct gov_attr_set *attr_set,
 	return count;
 }
 
+<<<<<<< HEAD
 static ssize_t efficient_freq_store(struct gov_attr_set *attr_set,
 					const char *buf, size_t count)
 {
@@ -742,12 +747,18 @@ static ssize_t up_delay_store(struct gov_attr_set *attr_set,
 	return count;
 }
 
+=======
+>>>>>>> 634d8994b9d67... FROMLIST: sched: Make iowait_boost optional in schedutil
 static ssize_t iowait_boost_enable_show(struct gov_attr_set *attr_set,
 					char *buf)
 {
 	struct sugov_tunables *tunables = to_sugov_tunables(attr_set);
 
+<<<<<<< HEAD
 	return scnprintf(buf, PAGE_SIZE, "%u\n", tunables->iowait_boost_enable);
+=======
+	return sprintf(buf, "%u\n", tunables->iowait_boost_enable);
+>>>>>>> 634d8994b9d67... FROMLIST: sched: Make iowait_boost optional in schedutil
 }
 
 static ssize_t iowait_boost_enable_store(struct gov_attr_set *attr_set,
@@ -767,15 +778,21 @@ static ssize_t iowait_boost_enable_store(struct gov_attr_set *attr_set,
 static struct governor_attr up_rate_limit_us = __ATTR_RW(up_rate_limit_us);
 static struct governor_attr down_rate_limit_us = __ATTR_RW(down_rate_limit_us);
 static struct governor_attr iowait_boost_enable = __ATTR_RW(iowait_boost_enable);
+<<<<<<< HEAD
 static struct governor_attr efficient_freq = __ATTR_RW(efficient_freq);
 static struct governor_attr up_delay = __ATTR_RW(up_delay);
+=======
+>>>>>>> 634d8994b9d67... FROMLIST: sched: Make iowait_boost optional in schedutil
 
 static struct attribute *sugov_attributes[] = {
 	&up_rate_limit_us.attr,
 	&down_rate_limit_us.attr,
 	&iowait_boost_enable.attr,
+<<<<<<< HEAD
 	&efficient_freq.attr,
 	&up_delay.attr,
+=======
+>>>>>>> 634d8994b9d67... FROMLIST: sched: Make iowait_boost optional in schedutil
 	NULL
 };
 
@@ -988,7 +1005,11 @@ static int sugov_init(struct cpufreq_policy *policy)
                 }
 	}
 
+<<<<<<< HEAD
 	tunables->iowait_boost_enable = 1;
+=======
+	tunables->iowait_boost_enable = policy->iowait_boost_enable;
+>>>>>>> 634d8994b9d67... FROMLIST: sched: Make iowait_boost optional in schedutil
 
 	policy->governor_data = sg_policy;
 	sg_policy->tunables = tunables;
