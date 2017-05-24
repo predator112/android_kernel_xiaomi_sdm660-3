@@ -69,3 +69,8 @@ obj-$(CONFIG_FORCE_FAST_CHARGE) += fastchg.o
 obj-$(CONFIG_MEMORY_STATE_TIME) += memory_state_time.o
 obj-$(CONFIG_ANT_CHECK)		+= ant_check.o
 obj-$(CONFIG_HQ_HARDWARE_INFO) += hqhardwareinfo/
+
+# TODO: remove me b/62057517
+subdir-ccflags-y += \
+	-Wno-ignored-attributes \
+	-Wno-header-guard
