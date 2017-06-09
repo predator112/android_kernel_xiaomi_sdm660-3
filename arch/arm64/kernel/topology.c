@@ -305,6 +305,7 @@ static void update_cpu_capacity(unsigned int cpu)
 
 void update_cpu_power_capacity(int cpu)
 {
+	update_cpu_power(cpu);
 	update_cpu_capacity(cpu);
 }
 
