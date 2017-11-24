@@ -1018,4 +1018,7 @@ config MFSE_QMI
 config STATE_NOTIFIER
 	bool "State Notifier"
 
+config STATE_NOTIFIER
+        bool "State Notifier"
+
 source "drivers/soc/qcom/memshare/Kconfig"
