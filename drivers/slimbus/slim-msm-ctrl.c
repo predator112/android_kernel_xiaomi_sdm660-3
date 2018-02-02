@@ -92,8 +92,13 @@ enum mgr_intr {
 
 enum frm_cfg {
 	FRM_ACTIVE	= 1,
+<<<<<<< HEAD
 	CLK_GEAR	= 7,
 	ROOT_FREQ	= 11,
+=======
+	CLK_GEAR	= 11,
+	ROOT_FREQ	= 31,
+>>>>>>> 007ad8e3bfef... Slimbus: incrase more the frequency for better audio quality (faster processing)
 	REF_CLK_GEAR	= 15,
 	INTR_WAKE	= 19,
 };
