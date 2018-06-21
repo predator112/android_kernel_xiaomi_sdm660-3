@@ -20,6 +20,8 @@
 #include <linux/sort.h>
 #include <linux/debugfs.h>
 #include <linux/ktime.h>
+#include <linux/cpu_input_boost.h>
+#include <linux/devfreq_boost.h>
 #include <uapi/drm/sde_drm.h>
 #include <drm/drm_mode.h>
 #include <drm/drm_crtc.h>
@@ -987,7 +989,9 @@ void sde_crtc_commit_kickoff(struct drm_crtc *crtc)
 		return;
 
 
-	SDE_ATRACE_BEGIN("crtc_commit");
+	devfreq_boost_kick(DEVFREQ_MSM_CPUBW);
+	cpu_input_boost_kick();
+
 	list_for_each_entry(encoder, &dev->mode_config.encoder_list, head) {
 		if (encoder->crtc != crtc)
 			continue;
