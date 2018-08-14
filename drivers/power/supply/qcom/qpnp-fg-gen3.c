@@ -415,6 +415,8 @@ extern bool is_poweroff_charge;
 
 #define FG_RATE_LIM_MS (5 * MSEC_PER_SEC)
 
+#define FG_RATE_LIM_MS (5 * MSEC_PER_SEC)
+
 /* All getters HERE */
 
 #define VOLTAGE_15BIT_MASK	GENMASK(14, 0)
@@ -3964,6 +3966,30 @@ static int fg_psy_get_property(struct power_supply *psy,
 
 	sd->val = *pval;
 	sd->last_req_expires = jiffies + msecs_to_jiffies(FG_RATE_LIM_MS);
+
+	return 0;
+}
+#if defined(CONFIG_KERNEL_CUSTOM_E7T)
+#define BCL_RESET_RETRY_COUNT 4
+static int fg_bcl_reset(struct fg_chip *chip)
+{
+	int i, ret, rc = 0;
+	u8 val, peek_mux;
+	bool success = false;
+	pr_err("FG_BCL_RESET START\n");
+	/* Read initial value of peek mux1 */
+	rc = fg_read(chip, BATT_INFO_PEEK_MUX1(chip), &peek_mux, 1);
+	if (rc < 0) {
+		pr_err("Error in writing peek mux1, rc=%d\n", rc);
+		return rc;
+	}
+	pr_err("FG_BCL_RESET PEEK_MUX = %d\n",peek_mux);
+	val = 0x83;
+	rc = fg_write(chip, BATT_INFO_PEEK_MUX1(chip), &val, 1);
+	if (rc < 0) {
+		pr_err("Error in writing peek mux1, rc=%d\n", rc);
+		return rc;
+	}
 
 	return 0;
 }
