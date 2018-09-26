@@ -735,6 +735,15 @@ config VM_DIRTY_RATIO
 	int "VM dirty ratio default value"
 	default 20
 
+	  If the speculative page fault fails because a concurrent modification
+	  is detected or because underlying PMD or PTE tables are not yet
+	  allocated, the speculative page fault fails and a classic page fault
+	  is then tried.
+
+config VM_DIRTY_RATIO
+	int "VM dirty ratio default value"
+	default 20
+
 config VM_DIRTY_BACKGROUND_RATIO
 	int "VM dirty background ratio default value"
 	default 5
