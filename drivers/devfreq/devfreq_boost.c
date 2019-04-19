@@ -108,8 +108,11 @@ void devfreq_register_boost_device(enum df_device device, struct devfreq *df)
 
 	df->is_boost_device = true;
 	b = d->devices + device;
+<<<<<<< HEAD
 	pr_info("%d", device);
 	df->curr_device = device;
+=======
+>>>>>>> e6c1ae208946... devfreq_boost: Introduce devfreq boost driver
 	WRITE_ONCE(b->df, df);
 }
 
@@ -145,10 +148,13 @@ static void devfreq_update_boosts(struct boost_dev *b, unsigned long state)
 			       df->profile->freq_table[0];
 		df->max_boost = test_bit(MAX_BOOST, &state);
 	}
+<<<<<<< HEAD
 
 	//Set values from P4 PHAL
 	set_phal_values(df);
 	
+=======
+>>>>>>> e6c1ae208946... devfreq_boost: Introduce devfreq boost driver
 	update_devfreq(df);
 	mutex_unlock(&df->lock);
 }
@@ -301,8 +307,13 @@ static int __init devfreq_boost_init(void)
 	for (i = 0; i < DEVFREQ_MAX; i++) {
 		struct boost_dev *b = d->devices + i;
 
+<<<<<<< HEAD
 		thread[i] = kthread_run_perf_critical(devfreq_boost_thread, b,
 						      "devfreq_boostd/%d", i);
+=======
+		thread[i] = kthread_run(devfreq_boost_thread, b,
+					"devfreq_boostd/%d", i);
+>>>>>>> e6c1ae208946... devfreq_boost: Introduce devfreq boost driver
 		if (IS_ERR(thread[i])) {
 			ret = PTR_ERR(thread[i]);
 			pr_err("Failed to create kthread, err: %d\n", ret);
