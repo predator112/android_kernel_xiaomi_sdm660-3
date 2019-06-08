@@ -76,7 +76,7 @@ static void anxiety_add_request(struct request_queue *q, struct request *rq)
 
 	list_add_tail(&rq->queuelist, &adata->queue[dir]);
 
-	list_add_tail(&rq->queuelist, &((struct anxiety_data *) q->elevator->elevator_data)->queue[dir]);
+	list_add_tail(&rq->queuelist, &adata->queue[dir]);
 }
 
 static int anxiety_init_queue(struct request_queue *q, struct elevator_type *elv)
