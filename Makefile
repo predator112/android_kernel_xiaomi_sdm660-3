@@ -690,6 +690,10 @@ ifdef CONFIG_LD_DEAD_CODE_DATA_ELIMINATION
 KBUILD_CFLAGS	+= $(call cc-option,-ffunction-sections,)
 KBUILD_CFLAGS	+= $(call cc-option,-fdata-sections,)
 endif
+# REVERTME
+KBUILD_CFLAGS	+= $(call cc-disable-warning, unused-function)
+KBUILD_CFLAGS   += $(call cc-disable-warning, missing-attributes)
+KBUILD_CFLAGS	+= $(call cc-disable-warning,maybe-uninitialized,)
 
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= -Os
