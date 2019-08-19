@@ -6289,7 +6289,16 @@ unsigned long
 boosted_cpu_util(int cpu)
 {
 	unsigned long util = cpu_util_freq(cpu);
-	long margin = schedtune_cpu_margin(util, cpu);
+	int margin;
+
+#ifdef CONFIG_DYNAMIC_STUNE_BOOST
+	if (dsb_boosting || sched_feat(SCHEDTUNE_BOOST_UTIL))
+#else
+	if (sched_feat(SCHEDTUNE_BOOST_UTIL))
+#endif
+		margin = 0;
+	else
+		margin = min(0, schedtune_cpu_margin(util, cpu));
 
 	trace_sched_boost_cpu(cpu, util, margin);
 
@@ -6300,7 +6309,16 @@ static inline unsigned long
 boosted_task_util(struct task_struct *task)
 {
 	unsigned long util = task_util_est(task);
-	long margin = schedtune_task_margin(task);
+	long margin;
+
+#ifdef CONFIG_DYNAMIC_STUNE_BOOST
+	if (dsb_boosting || sched_feat(SCHEDTUNE_BOOST_UTIL))
+#else
+	if (sched_feat(SCHEDTUNE_BOOST_UTIL))
+#endif
+		margin = 0;
+	else
+		margin = min((long)0, schedtune_task_margin(task));
 
 	trace_sched_boost_task(task, util, margin);
 
