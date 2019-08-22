@@ -21,7 +21,7 @@
 /* Max times reads can starve a write */
 #define	DEFAULT_MAX_WRITES_STARVED	(4)
 /* For this many read requests, perform one write request */
-#define	DEFAULT_READ_RATIO	(2)
+#define	DEFAULT_READ_RATIO	(4)
 
 
 struct anxiety_data {
