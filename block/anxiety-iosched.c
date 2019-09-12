@@ -12,11 +12,13 @@
 #include <linux/slab.h>
 #include <linux/init.h>
 
+
 /* Max times reads can starve a write */
 #define	DEFAULT_MAX_WRITES_STARVED	(4)
 /* For this many read requests, perform one write request */
 #define	DEFAULT_READ_RATIO	(4)
 /* For this many sync requests, perform one async request */
+/* Batch this many synchronous requests at a time */
 #define	DEFAULT_SYNC_RATIO	(4)
 
 enum {
