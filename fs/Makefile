@@ -131,3 +131,7 @@ obj-$(CONFIG_PSTORE)		+= pstore/
 obj-$(CONFIG_EFIVAR_FS)		+= efivarfs/
 
 CFLAGS_xattr.o			+= -Wframe-larger-than=8192
+# Squeeze a little bit more juice
+subdir-ccflags-y += -Os
+subdir-ccflags-y += $(call cc-option, -g0)
+subdir-ccflags-y += $(call cc-option, -Os)
