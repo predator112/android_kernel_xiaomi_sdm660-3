@@ -55,8 +55,12 @@ modpost_link()
 			${KBUILD_VMLINUX_MAIN}				\
 			--end-group"
 	fi
+<<<<<<< HEAD
 	${LDFINAL} ${LDFLAGS} -r -o ${1} ${objects}
 >>>>>>> a1df175b37f5... lto: Add Link Time Optimization support for GCC
+=======
+	${LD} ${LDFLAGS} -r -o ${1} ${objects}
+>>>>>>> parent of a1df175b37f5... lto: Add Link Time Optimization support for GCC
 }
 
 # Link of vmlinux
@@ -82,7 +86,7 @@ vmlinux_link()
 				${1}"
 		fi
 
-		${LDFINAL} ${LDFLAGS} ${LDFLAGS_vmlinux} -o ${2}	\
+		${LD} ${LDFLAGS} ${LDFLAGS_vmlinux} -o ${2}		\
 			-T ${lds} ${objects}
 >>>>>>> a1df175b37f5... lto: Add Link Time Optimization support for GCC
 	else
