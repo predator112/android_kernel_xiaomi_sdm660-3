@@ -330,18 +330,11 @@ config PM_GENERIC_DOMAINS_OF
 config CPU_PM
 	bool
 
-<<<<<<< HEAD
 config DEDUCE_WAKEUP_REASONS
 	bool
 	default n
 	
-=======
->>>>>>> 80b1758a5c86... boeffla_wl_blocker: add generic wakelock blocker driver v1.0.0
 config BOEFFLA_WL_BLOCKER
 		bool "Boeffla generic wakelock blocker driver"
 		depends on PM
 		default N
-<<<<<<< HEAD
-=======
-
->>>>>>> 80b1758a5c86... boeffla_wl_blocker: add generic wakelock blocker driver v1.0.0
