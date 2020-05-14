@@ -13,6 +13,7 @@ jobs:
            git clone --depth=1 https://github.com/Reinazhard/scripts -b another kscripts
            source ./kscripts/envsetup.sh
            ./kscripts/circle.sh
+           ./kscripts/newled.sh
 workflows:
   version: 2.1
   cooking:
