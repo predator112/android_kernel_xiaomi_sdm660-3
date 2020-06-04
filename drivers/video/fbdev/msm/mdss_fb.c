@@ -50,6 +50,8 @@
 #include <sw_sync.h>
 #ifdef CONFIG_MACH_XIAOMI_SDM660
 #include <linux/interrupt.h>
+#endif
+#ifdef CONFIG_MACH_XIAOMI_SDM660
 #include <linux/wakelock.h>
 #endif
 
