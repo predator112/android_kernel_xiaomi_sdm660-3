@@ -745,7 +745,6 @@ out:
 	/* Return the error we got before releasing memory access */
 	return rc;
 }
-
 int fg_ima_init(struct fg_chip *chip)
 {
 	int rc;
