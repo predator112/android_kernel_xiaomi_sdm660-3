@@ -1,0 +1,16 @@
+kind: pipeline
+name: Enryu's Build Bot
+
+clone:
+  depth: 1
+steps:
+- name: compile
+  image: ubuntu:20.04
+  environment:
+    BOT_API_KEY:
+      from_secret: BOT_API_KEY
+  commands:
+  - apt-get -y update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get -y install bc ccache build-essential kernel-package libncurses5-dev bzip2 zip gcc clang libc6 curl libstdc++6 git wget gcc-multilib g++-multilib libssl-dev zstd openjdk-11-jdk openjdk-11-jre
+  - git clone https://github.com/Reinazhard/scripts -b drone buildscript
+  - bash ./buildscript/envsetup.sh
+  - bash ./buildscript/drone.sh
