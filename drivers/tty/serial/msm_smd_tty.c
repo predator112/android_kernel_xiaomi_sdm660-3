@@ -1,5 +1,5 @@
 /* Copyright (C) 2007 Google, Inc.
- * Copyright (c) 2009-2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2009-2015, 2020, The Linux Foundation. All rights reserved.
  * Author: Brian Swetland <swetland@google.com>
  *
  * This software is licensed under the terms of the GNU General Public
@@ -368,6 +368,12 @@ static int smd_tty_dummy_probe(struct platform_device *pdev)
 	int n;
 
 	for (n = 0; n < MAX_SMD_TTYS; ++n) {
+<<<<<<< HEAD
+=======
+		if (smd_tty[n].dev_name == NULL)
+			continue;
+
+>>>>>>> 82f51c42fca7484995607c96585476938ce18e0e
 		if (pdev->id == smd_tty[n].edge &&
 			!strcmp(pdev->name, smd_tty[n].dev_name)) {
 			complete_all(&smd_tty[n].ch_allocated);

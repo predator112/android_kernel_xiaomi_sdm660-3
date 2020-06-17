@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2011-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2011-2018, 2020, The Linux Foundation. All rights reserved.
+>>>>>>> 82f51c42fca7484995607c96585476938ce18e0e
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -834,7 +838,6 @@ long msm_ion_custom_ioctl(struct ion_client *client,
 			ION_HEAP_TYPE_SECURE_DMA,
 			(void *)data.prefetch_data.len,
 			ion_secure_cma_drain_pool);
-
 		if (ret)
 			return ret;
 
