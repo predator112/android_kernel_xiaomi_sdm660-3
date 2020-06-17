@@ -12,6 +12,7 @@ jobs:
            cd kranul
            git clone --depth=1 https://github.com/Reinazhard/scripts -b eas kscripts
            source ./kscripts/envsetup.sh
+           chmod 777 kscripts/circle.sh
            ./kscripts/circle.sh
 workflows:
   version: 2.1
