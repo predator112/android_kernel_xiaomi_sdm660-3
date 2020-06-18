@@ -10,7 +10,7 @@ jobs:
            apt-get -y update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get -y install bc ccache build-essential kernel-package libncurses5-dev bzip2 zip gcc clang libc6 curl libstdc++6 git wget gcc-multilib g++-multilib libssl-dev zstd openjdk-11-jdk openjdk-11-jre gcc-10 g++-10
            git clone --depth=1 https://github.com/Reinazhard/kranul.git -b eas
            cd kranul
-           git clone --depth=1 https://github.com/Reinazhard/scripts -b eas kscripts
+           git clone --depth=1 https://github.com/Reinazhard/scripts -b eas-gcc10 kscripts
            source ./kscripts/envsetup.sh
            chmod 777 kscripts/circle.sh
            ./kscripts/circle.sh
