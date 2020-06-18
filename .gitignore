@@ -118,4 +118,3 @@ all.config
 android/configs/android-*.cfg
 
 out/
-build.sh
