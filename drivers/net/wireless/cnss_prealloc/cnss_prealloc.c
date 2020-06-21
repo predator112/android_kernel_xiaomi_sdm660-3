@@ -39,7 +39,7 @@ struct wcnss_prealloc {
 	void *ptr;
 #ifdef CONFIG_SLUB_DEBUG
 	unsigned long stack_trace[WCNSS_MAX_STACK_TRACE];
-	struct stack_trace trace;
+//	struct stack_trace trace;
 #endif
 };
 
@@ -141,13 +141,13 @@ void wcnss_prealloc_deinit(void)
 #ifdef CONFIG_SLUB_DEBUG
 static void wcnss_prealloc_save_stack_trace(struct wcnss_prealloc *entry)
 {
-	struct stack_trace *trace = &entry->trace;
+//	struct stack_trace *trace = &entry->trace;
 
-	memset(&entry->stack_trace, 0, sizeof(entry->stack_trace));
-	trace->nr_entries = 0;
-	trace->max_entries = WCNSS_MAX_STACK_TRACE;
-	trace->entries = entry->stack_trace;
-	trace->skip = 2;
+//	memset(&entry->stack_trace, 0, sizeof(entry->stack_trace));
+//	trace->nr_entries = 0;
+//	trace->max_entries = WCNSS_MAX_STACK_TRACE;
+//	trace->entries = entry->stack_trace;
+//	trace->skip = 2;
 
 	save_stack_trace(trace);
 
