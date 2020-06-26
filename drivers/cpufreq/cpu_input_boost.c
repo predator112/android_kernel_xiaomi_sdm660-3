@@ -12,7 +12,6 @@
 #include <linux/kthread.h>
 #include <linux/boost_control.h>
 #include <linux/sched.h>
-#include <linux/sched/sysctl.h>
 
 enum {
 	SCREEN_OFF,
@@ -215,7 +214,6 @@ static int cpu_notifier_cb(struct notifier_block *nb, unsigned long action,
 
 	/* Boost CPU to max frequency for max boost */
 	if (test_bit(MAX_BOOST, &b->state)) {
-		sysctl_sched_energy_aware = 0;
 		policy->min = get_max_boost_freq(policy);
 		return NOTIFY_OK;
 	}
@@ -228,10 +226,6 @@ static int cpu_notifier_cb(struct notifier_block *nb, unsigned long action,
 		policy->min = get_input_boost_freq(policy);
 	else
 		policy->min = policy->cpuinfo.min_freq;
-
-	/* If we are not boosting max for app launch/device wake, enable EAS */
-	sysctl_sched_energy_aware = 1;
-
 	return NOTIFY_OK;
 }
 
