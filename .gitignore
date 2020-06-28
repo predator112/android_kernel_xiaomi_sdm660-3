@@ -121,3 +121,5 @@ out/
 build.sh
 clang.sh
 wg.sh
+gcc/
+gcc32/
