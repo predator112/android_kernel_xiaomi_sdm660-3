@@ -6003,11 +6003,7 @@ static inline int __energy_diff(struct energy_env *eenv)
 	 * Dead-zone margin preventing too many migrations.
 	 */
 
-	/*
-	 * By default the EAS_CPU_PRV CPU is considered the most energy
-	 * efficient, with a 0 energy variation.
-	 */
-	eenv->next_idx = EAS_CPU_PRV;
+	margin = eenv->nrg.before >> 6; /* ~1.56% */
 
 	diff = eenv->nrg.after - eenv->nrg.before;
 
