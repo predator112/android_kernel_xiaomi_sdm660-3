@@ -123,3 +123,7 @@ clang.sh
 wg.sh
 gcc/
 gcc32/
+#
+#Ignoring Android.bp link file
+#
+Android.bp
