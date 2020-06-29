@@ -144,7 +144,7 @@
 			qcom,ea = <&ea3>;
 			efficiency = <1024>;
 			capacity-dmips-mhz = <1024>;
-			freq-energy-model;l
+			freq-energy-model;
 			sched-energy-costs = <&CPU_COST_0 &CLUSTER_COST_0>;
 			next-level-cache = <&L2_0>;
 			L1_I_3: l1-icache {
