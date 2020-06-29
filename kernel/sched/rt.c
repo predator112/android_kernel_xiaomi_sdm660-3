@@ -1443,7 +1443,7 @@ enqueue_task_rt(struct rq *rq, struct task_struct *p, int flags)
 
 	rt_se->schedtune_enqueued = true;
 	schedtune_enqueue_task(p, cpu_of(rq));
-	cpufreq_update_this_cpu(rq, SCHED_CPUFREQ_RT);
+	cpufreq_update_util(rq, SCHED_CPUFREQ_RT);
 }
 
 static void dequeue_task_rt(struct rq *rq, struct task_struct *p, int flags)
