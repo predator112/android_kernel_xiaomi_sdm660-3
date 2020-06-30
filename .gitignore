@@ -116,3 +116,10 @@ all.config
 
 # fetched Android config fragments
 android/configs/android-*.cfg
+
+out/
+gcc/
+gcc32/
+build.sh
+wg.sh
+clang.sh
