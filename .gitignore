@@ -119,9 +119,8 @@ all.config
 android/configs/android-*.cfg
 
 out/
-build.sh
-clang.sh
-wg.sh
+anykernel/
+*.sh
 gcc/
 gcc32/
 #
