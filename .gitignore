@@ -117,6 +117,9 @@ all.config
 # fetched Android config fragments
 android/configs/android-*.cfg
 
+out/
+anykernel/
+*.sh
 gcc/
 gcc32/
 out/
