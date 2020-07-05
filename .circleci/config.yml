@@ -12,7 +12,8 @@ jobs:
            cd kranul
            git clone --depth=1 https://github.com/Reinazhard/scripts -b test kscripts
            source ./kscripts/envsetup.sh
-           ./kscripts/circle.sh
+           chmod +x kscripts/whyred.sh
+           ./kscripts/whyred.sh
 workflows:
   version: 2.1
   cooking:
