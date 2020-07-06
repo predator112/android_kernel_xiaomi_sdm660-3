@@ -160,6 +160,9 @@ SECTIONS
 	.exit.text : {
 		ARM_EXIT_KEEP(EXIT_TEXT)
 	}
+	.altinstr_replacement : {
+		*(.altinstr_replacement)
+	}
 
 	.init.data : {
 		INIT_DATA
