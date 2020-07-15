@@ -1,0 +1,19 @@
+version: 2.1
+jobs:
+  compile:
+   docker:
+      - image: fadlyas/kernel_dockerfile:latest
+   steps:
+      - run:
+          no_output_timeout: 50m
+          command: |
+           git clone --depth=1 https://github.com/Reinazhard/kranul.git -b rebbase
+           cd kranul
+           git clone --depth=1 https://github.com/Reinazhard/scripts -b eas-gcc9 kscripts
+           source ./kscripts/envsetup.sh && chmod +x kscripts/circle.sh
+           bash kscripts/circle.sh
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - compile
