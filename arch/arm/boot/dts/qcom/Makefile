@@ -215,13 +215,7 @@ dtb-$(CONFIG_ARCH_MSMHAMSTER) += msmhamster-rumi.dtb
 ifeq ($(CONFIG_KERNEL_CUSTOM_E7S),y)
 dtb-$(CONFIG_ARCH_SDM660) += sdm636-mtp_e7s.dtb \
 	sdm660-mtp.dtb 
-<<<<<<< HEAD
-else
-dtb-$(CONFIG_ARCH_SDM660) += sdm660-mtp.dtb 
-endif 
-=======
 endif
->>>>>>> bdd4c48cdaf4... qcom & defconfig : remove useless dtb and cleanup defconfig
 
 
 ifeq ($(CONFIG_ARM64),y)
