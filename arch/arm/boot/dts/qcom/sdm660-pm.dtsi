@@ -187,9 +187,6 @@
 				#size-cells = <0>;
 				label = "perf";
 				qcom,spm-device-names = "l2";
-				qcom,ref-stddev = <100>;
-				qcom,tmr-add = <100>;
-				qcom,ref-premature-cnt = <3>;
 				qcom,cpu = <&CPU4 &CPU5 &CPU6 &CPU7>;
 				qcom,psci-mode-shift = <4>;
 				qcom,psci-mode-mask = <0xf>;
