@@ -214,7 +214,6 @@ int msm_sensor_power_up(struct msm_sensor_ctrl_t *s_ctrl)
 				continue;
 			}
 		}
-#endif
 
 		for(check_id_retry = 0; check_id_retry < 3; check_id_retry++) {
 			rc = msm_sensor_check_id(s_ctrl);
