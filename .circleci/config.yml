@@ -10,8 +10,8 @@ jobs:
            git clone -j32 --depth=1 https://github.com/Reinazhard/kranul.git -b unified
            cd kranul
            git clone -j32  --depth=1 https://github.com/Reinazhard/scripts -b unified kscripts
-           source ./kscripts/envsetup.sh && chmod +x kscripts/circle.sh && export KERNELRELEASE=TEST
-           bash kscripts/circle.sh
+           source ./kscripts/envsetup.sh && chmod +x kscripts/whyred.sh && export KERNELRELEASE=TEST
+           bash kscripts/whyred.sh
 workflows:
   version: 2.1
   cooking:
