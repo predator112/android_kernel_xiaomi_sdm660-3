@@ -7,10 +7,10 @@ jobs:
       - run:
           no_output_timeout: 50m
           command: |
-           git clone --depth=1 https://github.com/Reinazhard/kranul.git -b rebbase
+           git clone -j32 --depth=1 https://github.com/Reinazhard/kranul.git -b unified
            cd kranul
-           git clone --depth=1 https://github.com/Reinazhard/scripts -b eas-gcc9 kscripts
-           source ./kscripts/envsetup.sh && chmod +x kscripts/circle.sh
+           git clone -j32  --depth=1 https://github.com/Reinazhard/scripts -b unified kscripts
+           source ./kscripts/envsetup.sh && chmod +x kscripts/circle.sh && export KERNELRELEASE=TEST
            bash kscripts/circle.sh
 workflows:
   version: 2.1
