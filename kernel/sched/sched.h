@@ -471,6 +471,9 @@ struct rt_rq {
 	unsigned long rt_nr_total;
 	int overloaded;
 	struct plist_head pushable_tasks;
+
+	struct sched_avg avg;
+
 #endif /* CONFIG_SMP */
 	int rt_queued;
 
@@ -1572,6 +1575,7 @@ static inline int hrtick_enabled(struct rq *rq)
 
 #ifdef CONFIG_SMP
 extern void sched_avg_update(struct rq *rq);
+extern unsigned long sched_get_rt_rq_util(int cpu);
 
 #ifndef arch_scale_freq_capacity
 static __always_inline
@@ -1662,20 +1666,26 @@ extern bool walt_disabled;
  */
 static inline unsigned long __cpu_util(int cpu, int delta)
 {
-	unsigned long util = cpu_rq(cpu)->cfs.avg.util_avg;
-	unsigned long capacity = capacity_orig_of(cpu);
+	struct cfs_rq *cfs_rq;
+	unsigned long util;
 
 #ifdef CONFIG_SCHED_WALT
-	if (!walt_disabled && sysctl_sched_use_walt_cpu_util)
-		util = div64_u64(cpu_rq(cpu)->cumulative_runnable_avg,
+	if (!walt_disabled && sysctl_sched_use_walt_cpu_util) {
+		util = div64_u64(cpu_rq(cpu)->cfs->cumulative_runnable_avg,
 				 walt_ravg_window >> SCHED_LOAD_SHIFT);
+
+		return min_t(unsigned long, util, capacity_orig_of(cpu));
+	}
 #endif
 
-	delta += util;
-	if (delta < 0)
-		return 0;
+	cfs_rq = &cpu_rq(cpu)->cfs;
+	util = READ_ONCE(cfs_rq->avg.util_avg);
 
-	return (delta >= capacity) ? capacity : delta;
+	if (sched_feat(UTIL_EST))
+		util = max_t(unsigned long, util,
+			READ_ONCE(cfs_rq->avg.util_est.enqueued));
+
+	return min_t(unsigned long, util, capacity_orig_of(cpu));
 }
 
 static inline unsigned long cpu_util(int cpu)
@@ -2008,6 +2018,7 @@ extern void cfs_bandwidth_usage_dec(void);
 enum rq_nohz_flag_bits {
 	NOHZ_TICK_STOPPED,
 	NOHZ_BALANCE_KICK,
+	NOHZ_STATS_KICK
 };
 
 #define nohz_flags(cpu)	(&cpu_rq(cpu)->nohz_flags)
