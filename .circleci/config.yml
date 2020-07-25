@@ -7,11 +7,11 @@ jobs:
       - run:
           no_output_timeout: 50m
           command: |
-           git clone --depth=1 https://github.com/Reinazhard/kranul.git -b rebbase
+           git clone -j32 --depth=1 https://github.com/Reinazhard/kranul.git -b uni-eas
            cd kranul
-           git clone --depth=1 https://github.com/Reinazhard/scripts -b eas-gcc9 kscripts
-           source ./kscripts/envsetup.sh && chmod +x kscripts/circle.sh
-           bash kscripts/circle.sh
+           git clone -j32 --depth=1 https://github.com/Reinazhard/scripts -b unified kscripts
+           source ./kscripts/envsetup.sh && chmod +x kscripts/whyred.sh && export KERNELRELEASE=x2
+           bash kscripts/whyred.sh
 workflows:
   version: 2.1
   cooking:
