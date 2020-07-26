@@ -1536,10 +1536,10 @@ static int fg_load_learned_cap_from_sram(struct fg_chip *chip)
 		pr_err("Error in getting ACT_BATT_CAP, rc=%d\n", rc);
 		return rc;
 	}
-
+#if defined CONFIG_MACH_XIAOMI_WHYRED || CONFIG_MACH_XIAOMI_TULIP || CONFIG_MACH_XIAOMI_LAVENDER
 	chip->cl.learned_cc_uah = act_cap_mah * 1000;
 	chip->cl.learned_cc_uah = (chip->cl.learned_cc_uah > 4000000) ? chip->cl.learned_cc_uah : 4000000;
-
+#endif
 	if (chip->cl.learned_cc_uah != chip->cl.nom_cap_uah) {
 		if (chip->cl.learned_cc_uah == 0)
 			chip->cl.learned_cc_uah = chip->cl.nom_cap_uah;
