@@ -7,7 +7,7 @@ jobs:
       - run:
           no_output_timeout: 50m
           command: |
-           git clone -j32 --depth=1 https://github.com/Reinazhard/kranul.git -b unified
+           git clone -j32 --depth=1 https://github.com/Reinazhard/kranul.git -b test2
            cd kranul
            git clone -j32  --depth=1 https://github.com/Reinazhard/scripts -b unified kscripts
            source ./kscripts/envsetup.sh && chmod +x kscripts/whyred.sh && export KERNELRELEASE=TEST
