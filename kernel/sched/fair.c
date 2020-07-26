@@ -6295,13 +6295,6 @@ boosted_cpu_util(int cpu)
 
 	trace_sched_boost_cpu(cpu, util, margin);
 
-	if (sched_feat(SCHEDTUNE_BOOST_UTIL))
-		return util + margin;
-	else
-		margin = min(0, schedtune_cpu_margin(util, cpu));
-
-	trace_sched_boost_cpu(cpu, util, margin);
-
 	return util + margin;
 }
 
@@ -6310,13 +6303,6 @@ boosted_task_util(struct task_struct *task)
 {
 	unsigned long util = task_util_est(task);
 	long margin;
-
-	if (sched_feat(SCHEDTUNE_BOOST_UTIL))
-		return util + margin;
-	else
-		margin = min((long)0, schedtune_task_margin(task));
-
-	trace_sched_boost_task(task, util, margin);
 
 	return util + margin;
 }

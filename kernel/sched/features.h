@@ -85,4 +85,16 @@ SCHED_FEAT(ENERGY_AWARE, true)
 SCHED_FEAT(ENERGY_AWARE, false)
 #endif
 
-SCHED_FEAT(HISI_FILTER, true)
+/*
+ * Bias schedtune boosted tasks to higher capacity CPUs.
+ * If disabled, no bias will be applied.
+ */
+SCHED_FEAT(STUNE_BOOST_BIAS_BIG, true)
+
+/*
+ * Minimum capacity capping. Keep track of minimum capacity factor when
+ * minimum frequency available to a policy is modified.
+ * If enabled, this can be used to inform the scheduler about capacity
+ * restrictions.
+ */
+SCHED_FEAT(MIN_CAPACITY_CAPPING, true)
