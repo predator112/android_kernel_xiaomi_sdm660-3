@@ -122,6 +122,7 @@ gcc/
 gcc32/
 *.sh
 anykernel/
+clang/
 #
 #Ignoring Android.bp link file
 #
