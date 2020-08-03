@@ -106,9 +106,9 @@ static int cpu_psci_cpu_kill(unsigned int cpu)
 			return 0;
 		}
 
-		msleep(10);
-		pr_debug("Retrying again to check for CPU kill\n");
-	}
+		usleep_range(100, 1000);
+	} while (time_before(jiffies, end));
+	
 
 	pr_warn("CPU%d may not have shut down cleanly (AFFINITY_INFO reports %d)\n",
 			cpu, err);
