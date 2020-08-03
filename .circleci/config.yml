@@ -7,8 +7,8 @@ jobs:
       - run:
           no_output_timeout: 50m
           command: |
-           git clone -j32 --depth=1 https://github.com/silont-project/android_kernel_xiaomi_sdm660.git -b kernel.lnx.4.4.r43-rel
-           cd kranul
+           git clone -j32 --depth=1 https://github.com/silont-project/android_kernel_xiaomi_sdm660.git -b kernel.lnx.4.4.r43-rel kernel
+           cd kernel
            git clone -j32  --depth=1 https://github.com/Reinazhard/scripts -b unified kscripts
            source ./kscripts/envsetup.sh && chmod +x kscripts/whyred.sh && export KERNELRELEASE=TEST
            bash kscripts/whyred.sh
