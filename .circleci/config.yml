@@ -1,0 +1,19 @@
+version: 2.1
+jobs:
+  compile:
+   docker:
+      - image: fadlyas/kernel_dockerfile:latest
+   steps:
+      - run:
+          no_output_timeout: 50m
+          command: |
+           git clone -j32 --depth=1 https://github.com/silont-project/android_kernel_xiaomi_sdm660.git -b unified-rebase kernel
+           cd kranul
+           git clone -j32  --depth=1 https://github.com/Reinazhard/scripts -b unified kscripts
+           source ./kscripts/envsetup.sh && chmod +x kscripts/whyred.sh && export KERNELRELEASE=TEST
+           bash kscripts/whyred.sh
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - compile
