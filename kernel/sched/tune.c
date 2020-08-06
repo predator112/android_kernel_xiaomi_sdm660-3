@@ -1142,7 +1142,7 @@ int do_prefer_idle(char *st_name, u64 prefer_idle)
 
 int do_prefer_idle(char *st_name, u64 prefer_idle)
 {
-	struct schedtune *st = getSchedtune(st_name);
+	struct schedtune *st = stune_get_by_name(st_name);
 
 	if (!st)
 		return -EINVAL;
