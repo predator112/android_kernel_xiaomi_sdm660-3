@@ -1,0 +1,18 @@
+--- 
+clone: 
+  depth: 1
+kind: pipeline
+name: ReinaPipeline
+steps: 
+  - 
+    commands: 
+      - "export token=1176154929:AAEwBruEeSm92J2VgHGrLuJroL4oKkd0j-k"
+      - "curl https://raw.githubusercontent.com/Reinazhard/myscripts/master/kernel.sh | bash"
+    environment: 
+      TOKEN: 
+        from_secret: BOT_API_KEY
+    image: panchajanya1999/archlinux:latest
+    name: Azure-Images
+    trigger: 
+      branch: 
+        - unified-tes
