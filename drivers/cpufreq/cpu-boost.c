@@ -236,7 +236,6 @@ static void do_input_boost_rem(struct work_struct *work)
 	update_policy_online();
 
 	if (sched_boost_active) {
-		ret = (0);
 		if (ret)
 			pr_err("cpu-boost: HMP boost disable failed\n");
 		sched_boost_active = false;
@@ -284,7 +283,6 @@ static void do_input_boost(struct work_struct *work)
 
 	/* Enable scheduler boost to migrate tasks to big cluster */
 	if (sched_boost_on_input) {
-		ret = (1);
 		if (ret)
 			pr_err("cpu-boost: HMP boost enable failed\n");
 		else
@@ -327,7 +325,6 @@ static void do_powerkey_input_boost(struct work_struct *work)
 
 	/* Enable scheduler boost to migrate tasks to big cluster */
 	if (sched_boost_on_powerkey_input) {
-		ret = (1);
 		if (ret)
 			pr_err("cpu-boost: HMP boost enable failed\n");
 		else
