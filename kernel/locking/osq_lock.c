@@ -146,7 +146,7 @@ bool osq_lock(struct optimistic_spin_queue *lock)
 	}
 	return true;
 
-	/* unqueue */
+unqueue:
 	/*
 	 * Step - A  -- stabilize @prev
 	 *
