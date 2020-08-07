@@ -1140,16 +1140,6 @@ int do_prefer_idle(char *st_name, u64 prefer_idle)
 	return prefer_idle_write(&st->css, NULL, prefer_idle);
 }
 
-int do_prefer_idle(char *st_name, u64 prefer_idle)
-{
-	struct schedtune *st = stune_get_by_name(st_name);
-
-	if (!st)
-		return -EINVAL;
-
-	return prefer_idle_write(&st->css, NULL, prefer_idle);
-}
-
 int set_stune_boost(char *st_name, int boost, int *boost_default)
 {
 	struct schedtune *st = stune_get_by_name(st_name);
