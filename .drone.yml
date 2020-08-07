@@ -11,8 +11,8 @@ steps:
     environment: 
       TOKEN: 
         from_secret: BOT_API_KEY
-    image: panchajanya1999/archlinux:latest
+    image: fadlyas/kernel_dockerfile:latest
     name: Azure-Images
     trigger: 
       branch: 
-        - unified-tes
+        - unified-test
