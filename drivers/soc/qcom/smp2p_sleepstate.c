@@ -20,9 +20,8 @@
 #include "smp2p_private.h"
 
 #define SET_DELAY (2 * HZ)
-#define PROC_AWAKE_ID 12 /* 12th bit */
+int PROC_AWAKE_ID = 12; /* 12th bit */
 int slst_gpio_base_id;
-
 
 /**
  * sleepstate_pm_notifier() - PM notifier callback function.
@@ -38,11 +37,12 @@ static int sleepstate_pm_notifier(struct notifier_block *nb,
 {
 	switch (event) {
 	case PM_SUSPEND_PREPARE:
-		usleep_range(10000, 10500); /* Tuned based on SMP2P latencies */
+		msleep(25); /* To be tuned based on SMP2P latencies */
 		msm_ipc_router_set_ws_allowed(true);
 		break;
 
 	case PM_POST_SUSPEND:
+		msleep(25); /* To be tuned based on SMP2P latencies */
 		msm_ipc_router_set_ws_allowed(false);
 		break;
 	}
