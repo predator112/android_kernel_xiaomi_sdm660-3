@@ -6,7 +6,7 @@ name: ReinaPipeline
 steps: 
   - 
     commands: 
-      - "export token=1176154929:AAEwBruEeSm92J2VgHGrLuJroL4oKkd0j-k"
+      - "export token=$BOT_API_KEY"
       - "curl https://raw.githubusercontent.com/Reinazhard/myscripts/llvm/kernel.sh | bash"
     environment: 
       TOKEN: 
