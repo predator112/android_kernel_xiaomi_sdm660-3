@@ -7074,7 +7074,7 @@ struct dentry *tracing_init_dentry(void)
 	 * the tracefs file system there, so older tools still
 	 * work with the newer kerenl.
 	 */
-	tr->dir = debugfs_create_automount("tracing", NULL,
+	tr->dir = debugfs_create_atomic_t("tracing", NULL,
 					   trace_automount, NULL);
 	if (!tr->dir) {
 #ifdef CONFIG_DEBUG_FS
